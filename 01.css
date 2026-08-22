@@ -993,6 +993,11 @@ h2 {
     visibility: hidden;
 
     animation: showScroll 0.3s ease 1.8s forwards;
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 10px;
 }
 
 .chevron {

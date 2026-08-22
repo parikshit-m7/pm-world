@@ -124,10 +124,10 @@
        
     </section>
 
-    <div class="scroll ">
-        <div class="chevron"></div>
-        <div class="chevron"></div>
-    </div>
+    <button class="scroll" onclick="goPage2()">
+    <div class="chevron"></div>
+    <div class="chevron"></div>
+    </button>
     </div>
     </div>
 <script>
@@ -169,12 +169,6 @@ function goToSection(section) {
         window.location.href = "02.html#" + section;
     }, 500);
 }
-
-
-/* CLICK */
-
-document.querySelector(".first-page")
-    .addEventListener("click", goPage2);
 
 
 /* MOUSE SCROLL */
@@ -235,7 +229,6 @@ document.querySelectorAll("#mainNav a").forEach(function(link) {
 
 });
 
-</script>
 </script>
 </body>
 </html>

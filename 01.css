@@ -403,69 +403,55 @@ nav a:hover {
 
 
     /* NAV MENU */
-
-     nav {
+    nav {
         position: absolute;
-
         top: calc(100% + 10px);
         right: 0;
         left: auto;
 
-        width: 170px;       /* 5 names ke according */
+        width: 150px;
+        padding: 25px;
 
-        padding: 10px;
+        display: none;
+        flex-direction: column;
+        gap: 3px;
 
         box-sizing: border-box;
 
-        display: none;
+         background: rgba(35, 65, 100, 0.94);
+        backdrop-filter: none;
 
-        flex-direction: column;
-
-        gap: 3px;
-
-        background: rgba(10,10,25,.96);
-
-        border: 1px solid rgba(255,255,255,.10);
-
+        border: 1px solid rgba(180, 230, 255, 0.35);
         border-radius: 16px;
+        box-shadow:  0 10px 35px rgba(0, 0, 0, 0.35),
+            0 0 20px rgba(80, 190, 255, 0.20);
 
         backdrop-filter: blur(20px);
-
-        box-shadow:
-            0 15px 35px rgba(0,0,0,.35);
+        overflow: hidden;
     }
-
-
-    /* OPEN MENU */
 
     nav.active {
         display: flex;
     }
 
-
     nav a {
         width: 100%;
-
         box-sizing: border-box;
 
-        padding:10px 12px;
+        padding: 10px 20px;
+        color: white;
 
-        text-align: center;
-
-         border-radius: 9px;
+        text-align: left;   /* RIGHT SIDE */
 
         font-size: 13px;
-
-        color: #aaa;
     }
 
 
     nav a:hover {
         color: white;
-        background:
-            rgba(108,99,255,0.10);
+       background: rgba(150, 220, 255, 0.18);
     }
-    
+
      nav a::after {
         display: none;
     }
@@ -475,7 +461,7 @@ nav a:hover {
 nav {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 10px;
 }
 
 nav a {
@@ -483,12 +469,12 @@ nav a {
 
     text-decoration: none;
 
-    color: #a7a7b2;
+    color: white;
 
     font-size: 14px;
     font-weight: 500;
 
-    padding: 8px 0;
+    padding: 10px ;
 
     transition:
         color 0.3s ease,
@@ -502,6 +488,7 @@ nav a:hover {
     color: white;
 
     transform: translateY(-2px);
+    border-radius: 30px;
 
     text-shadow:
         0 0 10px #6c63ff;
@@ -515,7 +502,7 @@ nav a::after {
     content: "";
 
     position: absolute;
-
+    
     left: 50%;
     bottom: 0;
 
@@ -534,7 +521,7 @@ nav a::after {
         );
 
     box-shadow:
-        0 0 8px rgba(108,99,255,.6);
+        0 0 0px rgba(252, 252, 254, 0.6);
 
     transition:
         width 0.3s ease;
@@ -545,71 +532,7 @@ nav a:hover::after {
     width: 100%;
 }
 
-@media (max-width: 700px) {
 
-    nav {
-        position: absolute;
-
-        top: calc(100% + 10px);
-        left: 0;
-
-        width: 100%;
-
-        box-sizing: border-box;
-
-        padding: 12px;
-
-        display: none;
-
-        flex-direction: column;
-
-        gap: 4px;
-
-        background: rgba(10,10,25,.96);
-
-        border:
-            1px solid
-            rgba(255,255,255,.1);
-
-        border-radius: 18px;
-
-        backdrop-filter: blur(20px);
-    }
-
-
-    nav.active {
-        display: flex;
-    }
-
-
-    nav a {
-        width: 100%;
-
-        box-sizing: border-box;
-
-        padding: 12px;
-
-        text-align: center;
-
-        border-radius: 10px;
-
-        transform: none;
-    }
-
-
-    nav a:hover {
-        background:
-            rgba(108,99,255,.1);
-
-        transform: none;
-    }
-
-
-    nav a::after {
-        display: none;
-    }
-
-}
 
 /* =========================
    HERO

@@ -351,6 +351,120 @@ nav a:hover {
 }
 
 
+
+/* =========================
+   MOBILE NAVBAR
+========================= */
+
+.menu-btn {
+    display: none;
+
+    background: transparent;
+    border: none;
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    header {
+        top: 12px;
+
+        width: 92%;
+
+        padding: 14px 18px;
+
+        border-radius: 18px;
+    }
+
+
+    .logo {
+        font-size: 14px;
+    }
+
+
+    /* HAMBURGER */
+
+    .menu-btn {
+        display: block;
+
+        z-index: 110;
+    }
+
+
+    /* NAV MENU */
+
+    nav {
+        position: absolute;
+
+        top: calc(100% + 10px);
+
+        left: 0;
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 15px;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 5px;
+
+        background: rgba(10, 10, 25, 0.95);
+
+        border:
+            1px solid
+            rgba(255,255,255,0.10);
+
+        border-radius: 18px;
+
+        backdrop-filter: blur(20px);
+
+        box-shadow:
+            0 15px 40px
+            rgba(0,0,0,0.3);
+    }
+
+
+    /* OPEN MENU */
+
+    nav.active {
+        display: flex;
+    }
+
+
+    nav a {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 12px;
+
+        text-align: center;
+
+        font-size: 14px;
+
+        border-radius: 10px;
+    }
+
+
+    nav a:hover {
+        background:
+            rgba(108,99,255,0.10);
+    }
+
+}
+
 /* =========================
    HERO
 ========================= */

@@ -993,39 +993,7 @@ h2 {
 }
 
 
-/* =========================
-   MOBILE PROFILE CARD
-========================= */
 
-@media (max-width: 700px) {
-
-    .profile-area {
-        position: relative !important;
-
-        height: auto !important;
-
-        margin-top: 0px !important;
-
-        padding: 0 15px 60px !important;
-
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-
-        transform: none !important;
-    }
-
-    .profile-card {
-        position: relative !important;
-
-        width: 310px !important;
-        max-width: 85vw !important;
-
-        height: 390px !important;
-
-        margin: 0 !important;
-    }
-}
 /* =========================
    ORBITS
 ========================= */

@@ -465,6 +465,145 @@ nav a:hover {
 
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+nav a {
+    position: relative;
+
+    text-decoration: none;
+
+    color: #a7a7b2;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    padding: 8px 0;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* HOVER */
+
+nav a:hover {
+    color: white;
+
+    transform: translateY(-2px);
+
+    text-shadow:
+        0 0 10px #6c63ff;
+}
+
+
+/* UNDERLINE */
+
+nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6c63ff,
+            #00d4ff
+        );
+
+    box-shadow:
+        0 0 8px rgba(108,99,255,.6);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+nav a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+
+    nav {
+        position: absolute;
+
+        top: calc(100% + 10px);
+        left: 0;
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 12px;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 4px;
+
+        background: rgba(10,10,25,.96);
+
+        border:
+            1px solid
+            rgba(255,255,255,.1);
+
+        border-radius: 18px;
+
+        backdrop-filter: blur(20px);
+    }
+
+
+    nav.active {
+        display: flex;
+    }
+
+
+    nav a {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 12px;
+
+        text-align: center;
+
+        border-radius: 10px;
+
+        transform: none;
+    }
+
+
+    nav a:hover {
+        background:
+            rgba(108,99,255,.1);
+
+        transform: none;
+    }
+
+
+    nav a::after {
+        display: none;
+    }
+
+}
+
 /* =========================
    HERO
 ========================= */
@@ -999,6 +1138,7 @@ h2 {
     cursor: pointer;
     padding: 10px;
 }
+
 
 .chevron {
     width: 14px;

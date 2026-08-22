@@ -1000,30 +1000,32 @@ h2 {
 @media (max-width: 700px) {
 
     .profile-area {
-        position: relative;
+        position: relative !important;
 
         height: auto !important;
 
-        margin-top: 20px !important;
+        margin-top: 80px !important;
 
-        padding:  0 15px 50px !important;
-        
+        padding: 0 15px 60px !important;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+
+        transform: none !important;
     }
 
     .profile-card {
-        width: 310px;
-        max-width: 85vw;
+        position: relative !important;
 
-        height: 390px;
-        margin-top: 0;
+        width: 310px !important;
+        max-width: 85vw !important;
+
+        height: 390px !important;
+
+        margin: 0 !important;
     }
-
 }
-
 /* =========================
    ORBITS
 ========================= */

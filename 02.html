@@ -552,110 +552,63 @@ document.querySelectorAll("#mainNav a").forEach(function(link) {
 const projectWindow =
     document.querySelector(".projects-window");
 
-const projectTrack =
-    document.querySelector(".projects-track");
-
-const projectCards =
-    document.querySelectorAll(".project-card");
-
-let projectIndex = 0;
-
 
 /* =========================
-   CARD WIDTH
-========================= */
-
-function getProjectStep() {
-
-    const card =
-        projectCards[0];
-
-    const gap =
-        parseFloat(
-            getComputedStyle(projectTrack).gap
-        );
-
-    return card.offsetWidth + gap;
-}
-
-
-/* =========================
-   MOVE PROJECT
-========================= */
-
-function moveProject() {
-
-    const step =
-        getProjectStep();
-
-    projectTrack.style.transform =
-        `translateX(-${projectIndex * step}px)`;
-
-}
-
-
-/* =========================
-   LAPTOP MOUSE WHEEL
+   MOUSE WHEEL
 ========================= */
 
 projectWindow.addEventListener(
     "wheel",
     function(e) {
 
+        /*
+        Wheel DOWN
+        → normal automatic loop ko
+        ek moment ke liye fast move
+        */
+
         if (e.deltaY > 0) {
 
-            if (projectIndex < 2) {
-
-                e.preventDefault();
-
-                projectIndex++;
-
-                moveProject();
-
-            }
+            projectWindow.scrollLeft += 40;
 
         }
 
-        else if (e.deltaY < 0) {
 
-            if (projectIndex > 0) {
+        /*
+        Wheel UP
+        → RIGHT
+        */
 
-                e.preventDefault();
+        else {
 
-                projectIndex--;
-
-                moveProject();
-
-            }
+            projectWindow.scrollLeft -= 40;
 
         }
 
     },
-    { passive: false }
+    {
+        passive: true
+    }
 );
 
 
 /* =========================
-   MOBILE TOUCH
+   MOBILE SWIPE
 ========================= */
 
-let touchStartX = 0;
-
-let touchStartY = 0;
-
+let startX = 0;
 
 projectWindow.addEventListener(
     "touchstart",
     function(e) {
 
-        touchStartX =
+        startX =
             e.touches[0].clientX;
 
-        touchStartY =
-            e.touches[0].clientY;
-
     },
-    { passive: true }
+    {
+        passive: true
+    }
 );
 
 
@@ -663,82 +616,28 @@ projectWindow.addEventListener(
     "touchend",
     function(e) {
 
-        const touchEndX =
+        const endX =
             e.changedTouches[0].clientX;
 
-        const touchEndY =
-            e.changedTouches[0].clientY;
+        const distance =
+            endX - startX;
 
 
-        const differenceX =
-            touchEndX - touchStartX;
+        if (distance < -50) {
 
-        const differenceY =
-            touchEndY - touchStartY;
+            projectWindow.scrollLeft += 250;
 
+        }
 
-        /*
-        Agar horizontal swipe
-        vertical swipe se zyada ho
-        */
+        else if (distance > 50) {
 
-        if (
-            Math.abs(differenceX) >
-            Math.abs(differenceY)
-        ) {
-
-
-            /* LEFT SWIPE */
-
-            if (
-                differenceX < -50 &&
-                projectIndex < 2
-            ) {
-
-                projectIndex++;
-
-                moveProject();
-
-            }
-
-
-            /* RIGHT SWIPE */
-
-            else if (
-                differenceX > 50 &&
-                projectIndex > 0
-            ) {
-
-                projectIndex--;
-
-                moveProject();
-
-            }
+            projectWindow.scrollLeft -= 250;
 
         }
 
     },
-    { passive: true }
-);
-
-
-/* =========================
-   START
-========================= */
-
-moveProject();
-
-
-/* =========================
-   RESIZE
-========================= */
-
-window.addEventListener(
-    "resize",
-    function() {
-
-        moveProject();
-
+    {
+        passive: true
     }
 );
 

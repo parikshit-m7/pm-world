@@ -545,6 +545,203 @@ document.querySelectorAll("#mainNav a").forEach(function(link) {
 
 });
 
+
+</script>
+<script>
+
+const projectWindow =
+    document.querySelector(".projects-window");
+
+const projectTrack =
+    document.querySelector(".projects-track");
+
+const projectCards =
+    document.querySelectorAll(".project-card");
+
+let projectIndex = 0;
+
+
+/* =========================
+   CARD WIDTH
+========================= */
+
+function getProjectStep() {
+
+    const card =
+        projectCards[0];
+
+    const gap =
+        parseFloat(
+            getComputedStyle(projectTrack).gap
+        );
+
+    return card.offsetWidth + gap;
+}
+
+
+/* =========================
+   MOVE PROJECT
+========================= */
+
+function moveProject() {
+
+    const step =
+        getProjectStep();
+
+    projectTrack.style.transform =
+        `translateX(-${projectIndex * step}px)`;
+
+}
+
+
+/* =========================
+   LAPTOP MOUSE WHEEL
+========================= */
+
+projectWindow.addEventListener(
+    "wheel",
+    function(e) {
+
+        if (e.deltaY > 0) {
+
+            if (projectIndex < 2) {
+
+                e.preventDefault();
+
+                projectIndex++;
+
+                moveProject();
+
+            }
+
+        }
+
+        else if (e.deltaY < 0) {
+
+            if (projectIndex > 0) {
+
+                e.preventDefault();
+
+                projectIndex--;
+
+                moveProject();
+
+            }
+
+        }
+
+    },
+    { passive: false }
+);
+
+
+/* =========================
+   MOBILE TOUCH
+========================= */
+
+let touchStartX = 0;
+
+let touchStartY = 0;
+
+
+projectWindow.addEventListener(
+    "touchstart",
+    function(e) {
+
+        touchStartX =
+            e.touches[0].clientX;
+
+        touchStartY =
+            e.touches[0].clientY;
+
+    },
+    { passive: true }
+);
+
+
+projectWindow.addEventListener(
+    "touchend",
+    function(e) {
+
+        const touchEndX =
+            e.changedTouches[0].clientX;
+
+        const touchEndY =
+            e.changedTouches[0].clientY;
+
+
+        const differenceX =
+            touchEndX - touchStartX;
+
+        const differenceY =
+            touchEndY - touchStartY;
+
+
+        /*
+        Agar horizontal swipe
+        vertical swipe se zyada ho
+        */
+
+        if (
+            Math.abs(differenceX) >
+            Math.abs(differenceY)
+        ) {
+
+
+            /* LEFT SWIPE */
+
+            if (
+                differenceX < -50 &&
+                projectIndex < 2
+            ) {
+
+                projectIndex++;
+
+                moveProject();
+
+            }
+
+
+            /* RIGHT SWIPE */
+
+            else if (
+                differenceX > 50 &&
+                projectIndex > 0
+            ) {
+
+                projectIndex--;
+
+                moveProject();
+
+            }
+
+        }
+
+    },
+    { passive: true }
+);
+
+
+/* =========================
+   START
+========================= */
+
+moveProject();
+
+
+/* =========================
+   RESIZE
+========================= */
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        moveProject();
+
+    }
+);
+
 </script>
 </body>
 </html>

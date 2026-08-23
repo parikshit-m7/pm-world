@@ -1666,7 +1666,10 @@ body {
     overflow: hidden;
     padding: 10px 0 15px;
     box-sizing: border-box;
+
+    
 }
+
 
 
 /* MOVING TRACK */
@@ -1674,14 +1677,12 @@ body {
 .projects-track {
     display: flex;
     gap: 25px;
-
     width: max-content;
+    
+    transform: translateX(0);
 
-    animation:
-        projectInfiniteLoop
-        10s
-        linear
-        infinite;
+    transition: transform 0.7s ease;
+
 }
 
 .projects-track:hover {
@@ -1689,19 +1690,17 @@ body {
 }
 
 
+
 /* PROJECT CARD */
 
 .project-card {
 
+    flex-shrink: 0;
     width: 320px;
     min-width: 320px;
-
     min-height: 350px;
-
     padding: 28px;
-
     box-sizing: border-box;
-
     border-radius: 24px;
 
     background:
@@ -1728,7 +1727,6 @@ body {
 /* CARD GLOW */
 
 .project-card::before {
-
     content: "";
 
     position: absolute;
@@ -1750,11 +1748,10 @@ body {
 /* HOVER */
 
 .project-card:hover {
-
     transform: translateY(-5px);
 
     border-color: #6c63ff;
-    
+
     box-shadow:
         0 9px 19px
         rgba(108,99,255,.20);
@@ -1764,7 +1761,6 @@ body {
 /* TOP */
 
 .project-top {
-
     display: flex;
 
     justify-content: space-between;
@@ -1776,7 +1772,6 @@ body {
 
 
 .project-number {
-
     color: #555;
 
     font-size: 12px;
@@ -1786,7 +1781,6 @@ body {
 
 
 .project-symbol {
-
     width: 50px;
     height: 50px;
 
@@ -1816,7 +1810,6 @@ body {
 /* TITLE */
 
 .project-card h3 {
-
     color: white;
 
     font-size: 23px;
@@ -1828,7 +1821,6 @@ body {
 /* DESCRIPTION */
 
 .project-card p {
-
     color: #858592;
 
     font-size: 13px;
@@ -1842,7 +1834,6 @@ body {
 /* TECHNOLOGIES */
 
 .project-tech {
-
     display: flex;
 
     gap: 8px;
@@ -1853,7 +1844,6 @@ body {
 }
 
 .project-tech span {
-
     padding: 6px 10px;
 
     border-radius: 20px;
@@ -1874,7 +1864,6 @@ body {
 /* BUTTON */
 
 .project-btn {
-
     display: inline-block;
 
     margin-top: 25px;
@@ -1900,7 +1889,6 @@ body {
 }
 
 .project-btn:hover {
-
     transform:
         translateX(6px);
 
@@ -1934,7 +1922,18 @@ body {
 ========================= */
 
 @media (max-width: 700px) {
+    
+    .projects-window {
+        width: 100%;
+        overflow: hidden;
+    }
 
+    .projects-track {
+        gap: 20px;
+
+        transition:
+            transform 0.6s ease;
+    }
     .project-card {
 
         width: 280px;

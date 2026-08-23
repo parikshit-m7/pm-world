@@ -554,93 +554,46 @@ const projectWindow =
 
 
 /* =========================
-   MOUSE WHEEL
+   SMOOTH MOUSE WHEEL
 ========================= */
 
-projectWindow.addEventListener(
-    "wheel",
-    function(e) {
+projectWindow.addEventListener("wheel", function(e) {
 
-        /*
-        Wheel DOWN
-        → normal automatic loop ko
-        ek moment ke liye fast move
-        */
+    e.preventDefault();
 
-        if (e.deltaY > 0) {
+    projectWindow.scrollBy({
+        left: e.deltaY * 0.3,
+        behavior: "smooth"
+    });
 
-            projectWindow.scrollLeft += 40;
-
-        }
-
-
-        /*
-        Wheel UP
-        → RIGHT
-        */
-
-        else {
-
-            projectWindow.scrollLeft -= 40;
-
-        }
-
-    },
-    {
-        passive: true
-    }
-);
+}, { passive: false });
 
 
 /* =========================
-   MOBILE SWIPE
+   MOBILE SWIPE - SMOOTH
 ========================= */
 
 let startX = 0;
+let startScroll = 0;
 
-projectWindow.addEventListener(
-    "touchstart",
-    function(e) {
+projectWindow.addEventListener("touchstart", function(e) {
 
-        startX =
-            e.touches[0].clientX;
+    startX = e.touches[0].clientX;
+    startScroll = projectWindow.scrollLeft;
 
-    },
-    {
-        passive: true
-    }
-);
+}, { passive: true });
 
 
-projectWindow.addEventListener(
-    "touchend",
-    function(e) {
+projectWindow.addEventListener("touchmove", function(e) {
 
-        const endX =
-            e.changedTouches[0].clientX;
+    const currentX = e.touches[0].clientX;
 
-        const distance =
-            endX - startX;
+    const distance = startX - currentX;
 
+    projectWindow.scrollLeft =
+        startScroll + distance;
 
-        if (distance < -50) {
-
-            projectWindow.scrollLeft += 250;
-
-        }
-
-        else if (distance > 50) {
-
-            projectWindow.scrollLeft -= 250;
-
-        }
-
-    },
-    {
-        passive: true
-    }
-);
-
+}, { passive: true });
 </script>
 </body>
 </html>
